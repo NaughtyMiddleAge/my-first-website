@@ -1,4 +1,4 @@
-    
+        
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -104,6 +104,25 @@
             color: #888888;
             font-size: 13px;
         }
+        /* 공지사항 상세 보기 */
+        #notice-detail {
+            margin-top: 20px;
+        }
+
+        #detail-title {
+            color: #1e40af;
+        }
+
+        #detail-info {
+            color: #888888;
+            font-size: 13px;
+        }
+
+        #detail-content {
+            line-height: 1.8;
+            min-height: 100px;
+            white-space: pre-line;
+        }
 
         /* 하단 */
         footer {
@@ -178,6 +197,21 @@
                 >
 
                 <div id="notice-list"></div>
+                <div id="notice-detail" style="display: none;">
+
+                <h3 id="detail-title"></h3>
+
+                <p id="detail-info"></p>
+
+                <hr>
+
+                <p id="detail-content"></p>
+
+                <button class="btn" onclick="backToList()">
+                    목록으로 돌아가기
+                </button>
+
+                </div>
                 <a href="#notice" class="btn">자세히 보기</a>
             </div>
 
@@ -207,10 +241,25 @@
     }
     
         // 공지사항 데이터
-        const notices = [    
-            { title: "홈페이지 오픈 안내", date: "2026-11-12", category: "일반" },
-            { title: "서비스 이용 안내", date: "2026-11-10", category: "안내" },
-            { title: "정기 점검 안내", date: "2026-11-08", category: "중요" }
+        const notices = [
+            {
+                title: "홈페이지 오픈 안내",
+                date: "2026-11-12",
+                category: "일반",
+                content: "안녕하세요. 홈페이지 오픈을 안내드립니다. 앞으로 다양한 소식과 정보를 이곳에서 확인하실 수 있습니다."
+            },
+            {
+                title: "서비스 이용 안내",
+                date: "2026-11-10",
+                category: "안내",
+                content: "홈페이지에서 제공하는 주요 서비스의 이용 방법을 안내드립니다. 메뉴를 통해 원하는 정보를 확인하실 수 있습니다."
+            },
+            {
+                title: "정기 점검 안내",
+                date: "2026-11-08",
+                category: "중요",
+                content: "보다 안정적인 서비스 제공을 위해 정기 점검을 진행합니다. 점검 시간에는 일부 서비스 이용이 제한될 수 있습니다."
+            }
         ];
 
         // 공지사항을 표시할 영역
@@ -221,22 +270,61 @@
 
         // 공지사항을 화면에 표시하는 함수
         function displayNotices(data) {
+        
             noticeList.innerHTML = "";
+        
             data.forEach(function(notice) {
+        
                 const item = document.createElement("div");
                 item.className = "notice-item";
-                
+        
                 const title = document.createElement("strong");
                 title.textContent = notice.title;
-                
+        
+                // 제목을 클릭하면 상세 내용 열기
+                title.style.cursor = "pointer";
+                title.style.color = "#2563eb";
+        
+                title.addEventListener("click", function() {
+                    showDetail(notice);
+                });
+        
                 const info = document.createElement("p");
                 info.textContent = notice.date + " · " + notice.category;
-                
+        
                 item.appendChild(title);
                 item.appendChild(info);
-
+        
                 noticeList.appendChild(item);
+        
             });
+        
+        }
+
+        // 공지사항 상세 내용 표시
+        function showDetail(notice) {
+        
+        document.getElementById("notice-list").style.display = "none";
+        document.getElementById("notice-search").style.display = "none";
+        
+        document.getElementById("detail-title").textContent = notice.title;
+        document.getElementById("detail-info").textContent =
+            notice.date + " · " + notice.category;
+        
+        document.getElementById("detail-content").textContent =
+            notice.content;
+        
+        document.getElementById("notice-detail").style.display = "block";
+        
+        }
+
+        // 공지사항 목록으로 돌아가기
+        function backToList() {
+        
+            document.getElementById("notice-detail").style.display = "none";
+            document.getElementById("notice-list").style.display = "block";
+            document.getElementById("notice-search").style.display = "block";
+        
         }
 
         // 검색 기능

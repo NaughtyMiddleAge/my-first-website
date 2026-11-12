@@ -1,4 +1,4 @@
-
+    
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -132,6 +132,21 @@
                 flex-direction: column;
             }
         }
+
+        /* 공지사항 검색창 */
+        #notice-search {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #dddddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        #notice-search:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
     </style>
 </head>
 
@@ -155,6 +170,13 @@
 
             <div class="card" id="notice">
                 <h2>공지사항</h2>
+
+                <input
+                    type="text"
+                    id="notice-search"
+                    placeholder="공지사항 검색..."
+                >
+
                 <div id="notice-list"></div>
                 <a href="#notice" class="btn">자세히 보기</a>
             </div>
@@ -194,24 +216,50 @@
         // 공지사항을 표시할 영역
         const noticeList = document.getElementById("notice-list");
 
-        // 공지사항을 하나씩 화면에 출력
-        notices.forEach(function(notice) {
+        // 검색창 가져오기
+        const searchInput = document.getElementById("notice-search");
 
-        const item = document.createElement("div");
-        item.className = "notice-item";
+        // 공지사항을 화면에 표시하는 함수
+        function displayNotices(data) {
+            noticeList.innerHTML = "";
+            data.forEach(function(notice) {
+                const item = document.createElement("div");
+                item.className = "notice-item";
+                
+                const title = document.createElement("strong");
+                title.textContent = notice.title;
+                
+                const info = document.createElement("p");
+                info.textContent = notice.date + " · " + notice.category;
+                
+                item.appendChild(title);
+                item.appendChild(info);
 
-        const title = document.createElement("strong");
-        title.textContent = notice.title;
+                noticeList.appendChild(item);
+            });
+        }
 
-        const info = document.createElement("p");
-        info.textContent = notice.date + " · " + notice.category;
+        // 검색 기능
+        searchInput.addEventListener("input", function() {
 
-        item.appendChild(title);
-        item.appendChild(info);
+            const keyword = searchInput.value.toLowerCase();
 
-        noticeList.appendChild(item);
+            const filteredNotices = notices.filter(function(notice) {
 
-   });
+                return (
+                    notice.title.toLowerCase().includes(keyword) ||
+                    notice.category.toLowerCase().includes(keyword)
+                );
+
+            });
+
+            displayNotices(filteredNotices);
+
+        });
+
+        // 최초 화면에 전체 공지사항 표시
+        displayNotices(notices);
+   
     </script>    
     
 </body>

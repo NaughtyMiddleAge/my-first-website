@@ -21,11 +21,12 @@
           align-items: center;
       }
       nav a {
-              color: white;
-              text-decoration: none;
-              margin-left: 20px;
+          color: white;
+          text-decoration: none;
+          margin-left: 20px;
+          white-space: nowrap;
       }
-      nav a.active {
+            nav a.active {
           font-weight: bold;
           border-bottom: 2px solid white;
           padding-bottom: 5px;
@@ -140,21 +141,22 @@
 
       /* 모바일 화면 대응 */
       @media (max-width: 650px) {
-          header {
-              padding: 20px;
-          }
-
-          .hero {
-              padding: 50px 20px;
-          }
-
-          .hero h1 {
-              font-size: 28px;
-          }
-
-          .card-wrap {
-              flex-direction: column;
-          }
+            header {
+                  padding: 20px;
+            }
+            .hero {
+                  padding: 50px 20px;
+            }
+            .hero h1 {
+                  font-size: 28px;
+            }
+            .card-wrap {
+                  flex-direction: column;
+            }
+            nav a {
+                  margin-left: 10px;
+            }
+            
       }
 
       /* 공지사항 검색창 */

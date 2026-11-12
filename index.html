@@ -88,6 +88,23 @@
             background-color: #1d4ed8;
         }
 
+        /* 공지사항 목록 */
+        .notice-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .notice-item strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .notice-item p {
+            margin: 0;
+            color: #888888;
+            font-size: 13px;
+        }
+
         /* 하단 */
         footer {
             background-color: #172554;
@@ -138,7 +155,7 @@
 
             <div class="card" id="notice">
                 <h2>공지사항</h2>
-                <p>이곳에 새로운 공지사항을 작성할 예정입니다.</p>
+                <div id="notice-list"></div>
                 <a href="#notice" class="btn">자세히 보기</a>
             </div>
 
@@ -166,7 +183,35 @@
     function showMessage() {
         alert("공지사항을 확인합니다!");
     }
+    
+        // 공지사항 데이터
+        const notices = [    
+            { title: "홈페이지 오픈 안내", date: "2026-11-12", category: "일반" },
+            { title: "서비스 이용 안내", date: "2026-11-10", category: "안내" },
+            { title: "정기 점검 안내", date: "2026-11-08", category: "중요" }
+        ];
 
+        // 공지사항을 표시할 영역
+        const noticeList = document.getElementById("notice-list");
+
+        // 공지사항을 하나씩 화면에 출력
+        notices.forEach(function(notice) {
+
+        const item = document.createElement("div");
+        item.className = "notice-item";
+
+        const title = document.createElement("strong");
+        title.textContent = notice.title;
+
+        const info = document.createElement("p");
+        info.textContent = notice.date + " · " + notice.category;
+
+        item.appendChild(title);
+        item.appendChild(info);
+
+        noticeList.appendChild(item);
+
+   });
     </script>    
     
 </body>

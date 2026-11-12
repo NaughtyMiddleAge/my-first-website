@@ -5,20 +5,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My First Website</title>
+
+    <style>
+        /* 전체 페이지 기본 설정 */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fa;
+            color: #333333;
+        }
+
+        /* 상단 메뉴 */
+        header {
+            background-color: #172554;
+            color: white;
+            padding: 20px 40px;
+        }
+
+        header h2 {
+            margin: 0;
+        }
+
+        /* 메인 영역 */
+        .hero {
+            background-color: #1e40af;
+            color: white;
+            padding: 70px 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #dbeafe;
+        }
+
+        /* 콘텐츠 영역 */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* 카드 배치 */
+        .card-wrap {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            flex: 1;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .card h2 {
+            color: #1e40af;
+        }
+
+        /* 버튼 */
+        .btn {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* 하단 */
+        footer {
+            background-color: #172554;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 60px;
+        }
+
+        /* 모바일 화면 대응 */
+        @media (max-width: 650px) {
+            header {
+                padding: 20px;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .card-wrap {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <h1>WELCOME!</h1>
+    <header>
+        <h2>MY FIRST WEBSITE</h2>
+    </header>
 
-    <p>나만의 첫 번째 웹사이트입니다.</p>
+    <section class="hero">
+        <h1>WELCOME!</h1>
+        <p>나만의 첫 번째 웹사이트에 오신 것을 환영합니다.</p>
+        <a href="#notice" class="btn">공지사항 보기</a>
+    </section>
 
-    <hr>
+    <main class="container">
 
-    <h2>공지사항</h2>
-    <p>이곳에 새로운 공지사항을 작성할 예정입니다.</p>
+        <div class="card-wrap">
 
-    <h2>일정 안내</h2>
-    <p>주요 일정을 이곳에서 확인할 수 있습니다.</p>
+            <div class="card" id="notice">
+                <h2>공지사항</h2>
+                <p>이곳에 새로운 공지사항을 작성할 예정입니다.</p>
+                <a href="#notice" class="btn">자세히 보기</a>
+            </div>
+
+            <div class="card">
+                <h2>일정 안내</h2>
+                <p>주요 일정을 이곳에서 확인할 수 있습니다.</p>
+                <a href="#schedule" class="btn">일정 확인</a>
+            </div>
+
+        </div>
+
+        <div class="card" id="schedule" style="margin-top: 20px;">
+            <h2>ABOUT THIS WEBSITE</h2>
+            <p>HTML과 CSS를 활용하여 제작한 첫 번째 웹사이트입니다.</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 My First Website</p>
+    </footer>
 
 </body>
 </html>

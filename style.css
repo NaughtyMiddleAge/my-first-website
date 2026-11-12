@@ -25,6 +25,11 @@
               text-decoration: none;
               margin-left: 20px;
       }
+      nav a.active {
+          font-weight: bold;
+          border-bottom: 2px solid white;
+          padding-bottom: 5px;
+      }
 
       header h2 {
           margin: 0;

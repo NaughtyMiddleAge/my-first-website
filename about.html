@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사이트 소개</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fa;
+            color: #333333;
+        }
+
+        header {
+            background-color: #172554;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .card h1 {
+            color: #1e40af;
+        }
+
+        .card p {
+            line-height: 1.8;
+        }
+
+        footer {
+            background-color: #172554;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 650px) {
+            header {
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>MY FIRST WEBSITE</h2>
+
+        <nav>
+            <a href="index.html">홈</a>
+            <a href="about.html">사이트 소개</a>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <div class="card">
+            <h1>사이트 소개</h1>
+
+            <p>
+                이 홈페이지는 HTML, CSS, JavaScript를
+                활용하여 제작한 웹사이트입니다.
+            </p>
+
+            <p>
+                웹 개발의 기초부터 다양한 기능을
+                하나씩 구현하며 발전시켜 나갈 예정입니다.
+            </p>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 My First Website</p>
+    </footer>
+
+</body>
+</html>
